@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="./lib/jquery.js"></script>
+    <script src="./lib/template-web.js"></script>
+</head>
+
+<body>
+    <div id="haha"></div>
+    <!-- 创建模板引擎 -->
+    <script id="moban" type="text/html">
+        {{each data}}
+        <div class="d">{{data[0]}}</div>
+        {{/each}}
+    </script>
+    <script>
+
+        $.get('http://www.liulongbin.top:3006/api/getbooks', function (res) {
+            // console.log(res);
+            var ret = template('moban', res.data);
+            $('#haha').html(ret);
+
+        })
+    </script>
+</body>
+
+</html>
